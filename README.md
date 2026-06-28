@@ -16,7 +16,7 @@ Enter an origin city. Atlas plots reachable destinations worldwide on a great-ci
 
 ## Screenshot
 
-![Atlas dashboard](https://github.com/user-attachments/assets/5831d9b3-11d7-4496-97e8-dd4b9ce069f0)
+<img width="1917" height="896" alt="altas-dashboard" src="https://github.com/user-attachments/assets/9a590959-77cf-461b-92f4-5bdd1c72ef3a" />
 
 ---
 
