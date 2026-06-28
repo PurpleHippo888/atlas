@@ -1,0 +1,37 @@
+services:
+  atlas:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: atlas-travel-dashboard:latest
+    container_name: atlas
+    restart: unless-stopped
+    ports:
+      - "${ATLAS_PORT:-3000}:3000"
+    env_file:
+      - .env
+    environment:
+      # These are always set; .env can override
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      # Tier-2 optional: Amadeus API keys for live fares
+      # Leave unset to run fully keyless (distance-based estimates)
+      - AMADEUS_CLIENT_ID=${AMADEUS_CLIENT_ID:-}
+      - AMADEUS_CLIENT_SECRET=${AMADEUS_CLIENT_SECRET:-}
+      # "production" = Enterprise endpoint (api.amadeus.com). The self-service
+      # "test" endpoint is decommissioned on 2026-07-17; use Enterprise keys.
+      - AMADEUS_ENV=${AMADEUS_ENV:-test}
+    volumes:
+      # Optional persistent disk cache across container restarts
+      - atlas-cache:/app/.cache
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  atlas-cache:
+    driver: local

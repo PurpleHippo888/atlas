@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MapLibre GL CSS */
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+:root {
+  --map-bg: #0d1117;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+
+/* MapLibre control overrides */
+.maplibregl-ctrl-attrib {
+  background: rgba(13,17,23,0.85) !important;
+  color: #8b949e !important;
+  font-size: 10px !important;
+}
+.maplibregl-ctrl-attrib a { color: #60a5fa !important; }
+
+.maplibregl-ctrl-group {
+  background: #161b22 !important;
+  border: 1px solid #30363d !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
+}
+.maplibregl-ctrl-group button {
+  background: transparent !important;
+  color: #8b949e !important;
+  border-bottom: 1px solid #30363d !important;
+}
+.maplibregl-ctrl-group button:hover {
+  background: #1c2230 !important;
+  color: #e6edf3 !important;
+}
+.maplibregl-ctrl-group button:last-child { border-bottom: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #161b22; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
